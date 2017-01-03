@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
 
-// Interpolation can be done via the double curly braces syntax.
-// for actual property binding we can use the long syntax `bind-value`
-// or the `[value]` syntax.
-// Reminder: input['value'] = baseAmount
-
 @Component({
   selector: 'currency-converter',
   template: `
-    <input type="number" [value]="baseAmount" #baseAmountField> USD = 
+    <input type="number" [value]="baseAmount" 
+     (input)="update($event.target.value)"> USD = 
     <strong>{{targetAmount}}<strong> GBP
-    <button (click)="update(baseAmountField.value)">Update</button>
   `,
   styles: [`
     input[type=number] {

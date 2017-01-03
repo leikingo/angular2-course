@@ -25,8 +25,12 @@ Angular will automatically update the dom property to reflect the same value of 
 Basically interpolation and property binding are the same, but for none element attributes it is shorter to use the `{{}}` syntax.
 
 *Event binding* is used to bind a statement to an event for example `<button on-click="update()">`.
+The statement is most likely a method of the component.
 The more compact syntax is the `()` syntax: `<button (click)="update()">`
 
 Local template variable can be assigned with the `#` like `<input #exampleField>` and later referenced in this template like `<button (click)=update(exampleField.value)">`.
 The value property is passed as a string value here.
 
+To directly propagate an update of an input value, we can use event binding on the `input` event and actually reference the event with `$event`.
+The event has a `target` property which identifies the dom element that caused the event.
+Therefore we can use its value property to reference the new input value: `<input (input)="update($event.target.value)">`.
