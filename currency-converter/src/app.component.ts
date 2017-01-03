@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'currency-converter',
   template: `
-    <input type="number" [ngModel]="baseAmount" 
-     (ngModelChange)="update($event)"> USD = 
+    <input type="number" [(ngModel)]="baseAmount"> USD = 
     <strong>{{targetAmount}}<strong> GBP
   `,
   styles: [`
@@ -19,12 +18,8 @@ export class AppComponent {
   exchangeRate = 0.70;
   baseAmount = 1;
 
-  update(baseAmount) {
-    console.info("baseAmount:", baseAmount, "as a", typeof baseAmount);
-    this.baseAmount = baseAmount;
-  }
-
   get targetAmount() {
+    // this is actually called multiple times for each change... :-(
     return this.baseAmount * this.exchangeRate;
   }
 

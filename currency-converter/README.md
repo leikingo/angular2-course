@@ -40,3 +40,5 @@ Therefore we can use its value property to reference the new input value: `<inpu
 *Two-Way-Binding* is a combination of *Property* and *Event binding*.
 Instead of binding to a property of the dom element we do a *Property binding* on the angular property `ngModel`, and an *Event binding* on the `ngModelChange` event.
 Since the event is now a the actual model value, we also have the target type of the property and not a string value.
+Instead of `<input type="number" [ngModel]="componentProperty" (ngModelChange)="update($event)">` where the update method just sets the value of the component property, we can use the compact version `<input [(ngModel)]="componentProperty"`>.
+This is called the *Banana in a Box* syntax (`[()]`).
