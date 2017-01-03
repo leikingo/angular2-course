@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'currency-converter',
   template: `
-    <input type="number" [value]="baseAmount" 
-     (input)="update($event.target.value)"> USD = 
+    <input type="number" [ngModel]="baseAmount" 
+     (ngModelChange)="update($event)"> USD = 
     <strong>{{targetAmount}}<strong> GBP
   `,
   styles: [`
@@ -18,11 +18,14 @@ export class AppComponent {
 
   exchangeRate = 0.70;
   baseAmount = 1;
-  targetAmount = 0.70;
 
   update(baseAmount) {
-    // type of baseAmount is string
-    this.targetAmount = parseFloat(baseAmount) * this.exchangeRate;
+    console.info("baseAmount:", baseAmount, "as a", typeof baseAmount);
+    this.baseAmount = baseAmount;
+  }
+
+  get targetAmount() {
+    return this.baseAmount * this.exchangeRate;
   }
 
 }

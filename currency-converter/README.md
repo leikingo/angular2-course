@@ -23,10 +23,12 @@ Interpolation of component properties via the `{{<componentProperty}}` syntax.
 The more compact syntax is the `[]` syntax: `input['<elementDomProperty>'] = <componentProperty>`.
 Angular will automatically update the dom property to reflect the same value of the expresseion.
 Basically interpolation and property binding are the same, but for none element attributes it is shorter to use the `{{}}` syntax.
+*Property binding* does a *One-Way-Binding* from the *Component* to the *View*.
 
 *Event binding* is used to bind a statement to an event for example `<button on-click="update()">`.
 The statement is most likely a method of the component.
 The more compact syntax is the `()` syntax: `<button (click)="update()">`
+*Event binding* does a *One-Way-Binding* from the *View* to the *Component*.
 
 Local template variable can be assigned with the `#` like `<input #exampleField>` and later referenced in this template like `<button (click)=update(exampleField.value)">`.
 The value property is passed as a string value here.
@@ -34,3 +36,7 @@ The value property is passed as a string value here.
 To directly propagate an update of an input value, we can use event binding on the `input` event and actually reference the event with `$event`.
 The event has a `target` property which identifies the dom element that caused the event.
 Therefore we can use its value property to reference the new input value: `<input (input)="update($event.target.value)">`.
+
+*Two-Way-Binding* is a combination of *Property* and *Event binding*.
+Instead of binding to a property of the dom element we do a *Property binding* on the angular property `ngModel`, and an *Event binding* on the `ngModelChange` event.
+Since the event is now a the actual model value, we also have the target type of the property and not a string value.
