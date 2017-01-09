@@ -36,7 +36,7 @@ export class AppComponent {
   get targetAmount() {
     const exchangeRate = this.exchangeService
       .getExchangeRate(this.baseCurrency, this.targetCurrency);
-    return this.baseAmount * exchangeRate;
+    return (this.baseAmount * exchangeRate).toFixed(2);
   }
 
   isInvalid(value){
