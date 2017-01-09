@@ -57,6 +57,8 @@ We therefore can use *Property Binding* with our custom components as well with 
 For compoment change notifications events can be emitted using the `EventEmitter` and its `emit` method.
 In addition these events must declared as outputs, either via `outputs` property of the `@Component` annotation or via the `@Output()` annotation.
 To subscribe to change events, we can use the *Event binding* syntax, for example `(customEvent)=targetPropery = $event`.
+For simplification we can use the event emitter naming convention of property name plus `Change` suffix like `@Output() selectedChange = new EventEmitter();` for the `selected` property.
+This convention allows us a two way binding on that component property like `[(selected)]`.
 
 `*ngFor` is a structural directive and therfore needs a the `*` upfront.
 In contrast to `ngClass` or `ngModel` which are attribute directives, this changes the structure of the dom.
