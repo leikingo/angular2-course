@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'currency-converter',
   template: `
     <input type="number" [(ngModel)]="baseAmount"
-    [ngClass]="{error: isInvalid(baseAmount)}"> USD = 
+    [class.error]="isInvalid(baseAmount)"> USD = 
     <strong>{{targetAmount}}<strong> GBP
   `,
   styles: [`
@@ -23,8 +23,6 @@ export class AppComponent {
   baseAmount = 1;
 
   get targetAmount() {
-    // this is actually called multiple times for each change... :-(
-    console.info('baseAmount valid:', Number.isFinite(this.baseAmount));
     return this.baseAmount * this.exchangeRate;
   }
 

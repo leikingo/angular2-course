@@ -49,3 +49,4 @@ It is prefered to use the *Class Binding* to simplify the code and modify styles
 As a third option we can use the `ngClass`directive, like `[ngClass]={errorClass: isInvalid(value)}`.
 This has the advatage to set multiple classes via multiple conditions separated by `,`.
 For single/ simple class conditions the *CSS Class Binding* is simplier.
+
