@@ -4,13 +4,12 @@ import { ExchangeService } from './exchange.service';
 
 @Component({
   selector: 'currency-converter',
-  
   template: `
     <input type="number" [(ngModel)]="baseAmount"
       [class.error]="isInvalid(baseAmount)"> 
-    <currency-select></currency-select>
+    <currency-select [selected]="baseCurrency"></currency-select>
     = <strong>{{targetAmount}}<strong>
-    <currency-select selected="GBP"></currency-select>
+    <currency-select [selected]="targetCurrency"></currency-select>
   `,
   styles: [`
     input[type=number] {

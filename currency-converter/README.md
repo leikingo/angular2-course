@@ -51,3 +51,6 @@ This has the advatage to set multiple classes via multiple conditions separated 
 For single/ simple class conditions the *CSS Class Binding* is simplier.
 
 Input properties of compoments can be set via the `inputs` property of the `@Component` annotation.
+The shorthand syntax is to use `@Input()` directly before the component property to expose the property for binding.
+We therefore can use *Property Binding* with our custom components as well with the same syntax as *Element Binding*.
+

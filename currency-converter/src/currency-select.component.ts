@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'currency-select',
-    inputs: ['selected'],
     template: `
         <select>
             <option>{{selected}}</option>
@@ -11,6 +10,6 @@ import { Component } from '@angular/core';
 })
 export class CurrencySelectComponent {
 
-    selected = 'USD';
+    @Input() selected: string;
 
 }
