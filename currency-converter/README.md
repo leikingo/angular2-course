@@ -64,3 +64,7 @@ This convention allows us a two way binding on that component property like `[(s
 `*ngFor` and `*ngIf` are structural directives and therfore need a the `*` upfront.
 In contrast to `ngClass` or `ngModel` which are attribute directives, these directives change the structure of the dom.
 Inside these structural directives we have a so called microlevel syntax, a syntax specific to that directive.
+
+Pipes are used to format types in template expressions.
+Angular already has some built-in pipes like `date` or `number`.
+To create custom own pipes use a class that implements the `PipeTransform` interface and is annotated with the `@Pipe` annotion.

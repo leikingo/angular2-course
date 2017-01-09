@@ -8,7 +8,7 @@ import { ExchangeService } from './exchange.service';
     <input type="number" [(ngModel)]="baseAmount"
       [class.error]="isInvalid(baseAmount)"> 
     <currency-select [(selected)]="baseCurrency"></currency-select>
-    = <strong>{{targetAmount | number:'1.2-2' }}<strong>
+    = <strong>{{targetAmount | fixed:3 }}<strong>
     <currency-select [(selected)]="targetCurrency"></currency-select>
     <p *ngIf="isInvalid(baseAmount)">Please enter a valid amount</p>
   `,
