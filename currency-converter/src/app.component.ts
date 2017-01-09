@@ -7,9 +7,11 @@ import { ExchangeService } from './exchange.service';
   template: `
     <input type="number" [(ngModel)]="baseAmount"
       [class.error]="isInvalid(baseAmount)"> 
-    <currency-select [selected]="baseCurrency"></currency-select>
+    <currency-select [selected]="baseCurrency"
+      (setClick)="baseCurrency = $event"></currency-select>
     = <strong>{{targetAmount}}<strong>
-    <currency-select [selected]="targetCurrency"></currency-select>
+    <currency-select [selected]="targetCurrency"
+      (setClick)="targetCurrency = $event"></currency-select>
   `,
   styles: [`
     input[type=number] {
@@ -24,7 +26,7 @@ import { ExchangeService } from './exchange.service';
 export class AppComponent {
 
   baseCurrency = 'GBP';
-  targetCurrency = 'EUR'
+  targetCurrency = 'EUR';
   baseAmount = 1;
 
   // creates a private property and assignes its value according to the parameter

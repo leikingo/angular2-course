@@ -54,3 +54,10 @@ Input properties of compoments can be set via the `inputs` property of the `@Com
 The shorthand syntax is to use `@Input()` directly before the component property to expose the property for binding.
 We therefore can use *Property Binding* with our custom components as well with the same syntax as *Element Binding*.
 
+For compoment change notifications events can be emitted using the `EventEmitter` and its `emit` method.
+In addition these events must declared as outputs, either via `outputs` property of the `@Component` annotation or via the `@Output()` annotation.
+To subscribe to change events, we can use the *Event binding* syntax, for example `(customEvent)=targetPropery = $event`.
+
+`*ngFor` is a structural directive and therfore needs a the `*` upfront.
+In contrast to `ngClass` or `ngModel` which are attribute directives, this changes the structure of the dom.
+Inside this directive we have a so called microlevel syntax, a syntax specific to that directive.

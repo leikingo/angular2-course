@@ -1,5 +1,7 @@
 export class ExchangeService {
 
+    supportedCurrencies = ['EUR', 'GBP', 'USD'];
+
     private exchangeRates = {
         'EUR/GBP': 0.8007,
         'EUR/USD': 1.1397,
@@ -10,6 +12,10 @@ export class ExchangeService {
     };
 
     getExchangeRate(baseCurrency: string, targetCurrency: string) {
+        if ( baseCurrency == targetCurrency ){
+            return 1.0000;
+        }
+
         return this.exchangeRates[baseCurrency +'/'+ targetCurrency];
     }
 
