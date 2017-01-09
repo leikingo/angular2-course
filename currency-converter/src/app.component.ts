@@ -7,8 +7,10 @@ import { ExchangeService } from './exchange.service';
   
   template: `
     <input type="number" [(ngModel)]="baseAmount"
-    [class.error]="isInvalid(baseAmount)"> {{baseCurrency}} = 
-    <strong>{{targetAmount}}<strong> {{targetCurrency}}
+      [class.error]="isInvalid(baseAmount)"> 
+    <currency-select></currency-select>
+    = <strong>{{targetAmount}}<strong>
+    <currency-select selected="GBP"></currency-select>
   `,
   styles: [`
     input[type=number] {
