@@ -10,6 +10,7 @@ import { ExchangeService } from './exchange.service';
     <currency-select [(selected)]="baseCurrency"></currency-select>
     = <strong>{{targetAmount}}<strong>
     <currency-select [(selected)]="targetCurrency"></currency-select>
+    <p *ngIf="isInvalid(baseAmount)">Please enter a valid amount</p>
   `,
   styles: [`
     input[type=number] {

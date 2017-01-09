@@ -61,6 +61,6 @@ To subscribe to change events, we can use the *Event binding* syntax, for exampl
 For simplification we can use the event emitter naming convention of property name plus `Change` suffix like `@Output() selectedChange = new EventEmitter();` for the `selected` property.
 This convention allows us a two way binding on that component property like `[(selected)]`.
 
-`*ngFor` is a structural directive and therfore needs a the `*` upfront.
-In contrast to `ngClass` or `ngModel` which are attribute directives, this changes the structure of the dom.
-Inside this directive we have a so called microlevel syntax, a syntax specific to that directive.
+`*ngFor` and `*ngIf` are structural directives and therfore need a the `*` upfront.
+In contrast to `ngClass` or `ngModel` which are attribute directives, these directives change the structure of the dom.
+Inside these structural directives we have a so called microlevel syntax, a syntax specific to that directive.
