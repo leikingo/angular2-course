@@ -46,3 +46,6 @@ This is called the *Banana in a Box* syntax (`[()]`).
 *CSS Class Binding* is done by using `class.style` via the property binding syntax asigned to a condition, like `[class.errorClass] = "isInvalid(value)`.
 You can also set styles directly by using `style.<property>` like `[style.backgroundColor]="'#ff6666'"`.
 It is prefered to use the *Class Binding* to simplify the code and modify styles at a central location.
+As a third option we can use the `ngClass`directive, like `[ngClass]={errorClass: isInvalid(value)}`.
+This has the advatage to set multiple classes via multiple conditions separated by `,`.
+For single/ simple class conditions the *CSS Class Binding* is simplier.

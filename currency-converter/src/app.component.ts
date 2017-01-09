@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'currency-converter',
   template: `
     <input type="number" [(ngModel)]="baseAmount"
-    [class.error]="isInvalid(baseAmount)"> USD = 
+    [ngClass]="{error: isInvalid(baseAmount)}"> USD = 
     <strong>{{targetAmount}}<strong> GBP
   `,
   styles: [`
