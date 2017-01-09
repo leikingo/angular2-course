@@ -4,18 +4,17 @@ import { ExchangeService } from './exchange.service';
 @Component({
     selector: 'currency-select',
     template: `
-        <select [(ngModel)]="selected">
+        <select [ngModel]="selected" (ngModelChange)="onSelectedChange($event)">
             <option *ngFor="let currency of supportedCurrencies" [value]="currency">
                 {{currency}}
             </option>
         </select>
-        <button (click)="onSetClick()">Set</button>
     `
 })
 export class CurrencySelectComponent {
 
     @Input() selected: string;
-    @Output() selectedChange = new EventEmitter();
+    @Output() selectedChange = new EventEmitter<string>();
 
     supportedCurrencies: string[];
 
@@ -23,7 +22,8 @@ export class CurrencySelectComponent {
         this.supportedCurrencies = exchangeService.supportedCurrencies;
     }
     
-    onSetClick() {
+    onSelectedChange(selected: string) {
+        this.selected = selected;
         this.selectedChange.emit(this.selected);
     }
 

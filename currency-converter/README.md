@@ -55,6 +55,7 @@ The shorthand syntax is to use `@Input()` directly before the component property
 We therefore can use *Property Binding* with our custom components as well with the same syntax as *Element Binding*.
 
 For compoment change notifications events can be emitted using the `EventEmitter` and its `emit` method.
+The type of the emitted event can be specified via angle brackets like `EventEmitter<string>` to clarify that a `string` is published.
 In addition these events must declared as outputs, either via `outputs` property of the `@Component` annotation or via the `@Output()` annotation.
 To subscribe to change events, we can use the *Event binding* syntax, for example `(customEvent)=targetPropery = $event`.
 For simplification we can use the event emitter naming convention of property name plus `Change` suffix like `@Output() selectedChange = new EventEmitter();` for the `selected` property.
