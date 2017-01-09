@@ -42,3 +42,7 @@ Instead of binding to a property of the dom element we do a *Property binding* o
 Since the event is now a the actual model value, we also have the target type of the property and not a string value.
 Instead of `<input type="number" [ngModel]="componentProperty" (ngModelChange)="update($event)">` where the update method just sets the value of the component property, we can use the compact version `<input [(ngModel)]="componentProperty"`>.
 This is called the *Banana in a Box* syntax (`[()]`).
+
+*CSS Class Binding* is done by using `class.style` via the property binding syntax asigned to a condition, like `[class.errorClass] = "isInvalid(value)`.
+You can also set styles directly by using `style.<property>` like `[style.backgroundColor]="'#ff6666'"`.
+It is prefered to use the *Class Binding* to simplify the code and modify styles at a central location.
