@@ -17,4 +17,9 @@ For using forms, we need to import the `FormsModule` from `@angular/forms` in `a
 When a forms input field is bound to a component property via two-way-binding, the input element must be named as well.
 This is needed for angular to identify the field in the form.
 To submit a form, bind the `submit` event of the form via `(submit)=onSubmit()`.
+
 If we want to write an application that should be run on all the different browsers, we cannot rely on HTML5 form validation.
+We need to disable HTML5 basic form validation via `<form novalidate>` and use angular support for it instead.
+When we bind an input element with `[(ngModel)]`, angular automatically adds some classes like `ng-pristine`, `ng-invalid`, `ng-touched` etc..
+Some classes are removed or added when interaction takes places.
+For example `ng-pristine` changes to `ng-dirty` is added after a field is modified, `ng-untouched` changes to `ng-touched` when the input fields focus is lost, and `ng-valid`/ `ng-invalid` indicates if an input field is valid.
