@@ -33,4 +33,4 @@ By using the ngModel property `errors` we can also differentiate between the val
 To check the overall form status we can use the `ngForm` instance, which is automatically added to a from when the `FormsModule` is imported.
 By assigning this `ngForm` instance to a local template variable like `<form #form="ngForm">` we can reference it for further validation for instance.
 Instead of using the `(submit)` event of a form, we can also bind to the `(ngSubmit)` event which is emitted be the `ngForm` instance.
-
+To reset a form, we can use the `ngForm.resetForm()`, which also set the default classes like `ng-pristine` and `ng-untouched`.
