@@ -29,3 +29,8 @@ This actually reference the dom element and we could check for the existence of 
 It is better to directly reference the ngModel instance for the field, by assigning the local varaible to `ngModel`.
 This ngModel instance has also the fields like `pristine`, `touched` etc. and can therefore be used for validation as well with the `invalid` property.
 By using the ngModel property `errors` we can also differentiate between the validation/ error types like `required` or `pattern`. 
+
+To check the overall form status we can use the `ngForm` instance, which is automatically added to a from when the `FormsModule` is imported.
+By assigning this `ngForm` instance to a local template variable like `<form #form="ngForm">` we can reference it for further validation for instance.
+Instead of using the `(submit)` event of a form, we can also bind to the `(ngSubmit)` event which is emitted be the `ngForm` instance.
+
