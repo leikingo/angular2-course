@@ -28,3 +28,4 @@ To reference input fields with angular we can declare in input field with a loca
 This actually reference the dom element and we could check for the existence of certain classes to display error messages etc..
 It is better to directly reference the ngModel instance for the field, by assigning the local varaible to `ngModel`.
 This ngModel instance has also the fields like `pristine`, `touched` etc. and can therefore be used for validation as well with the `invalid` property.
+By using the ngModel property `errors` we can also differentiate between the validation/ error types like `required` or `pattern`. 
