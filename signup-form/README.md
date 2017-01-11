@@ -16,3 +16,5 @@ Learnings
 For using forms, we need to import the `FormsModule` from `@angular/forms` in `app.module.ts` and also declare the dependency in the `package.json` file.
 When a forms input field is bound to a component property via two-way-binding, the input element must be named as well.
 This is needed for angular to identify the field in the form.
+To submit a form, bind the `submit` event of the form via `(submit)=onSubmit()`.
+If we want to write an application that should be run on all the different browsers, we cannot rely on HTML5 form validation.

@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <form (submit)="onSubmit()">
       <div class="form-group">
         <label>E-Mail</label>
-        <input type="text" class="form-control" 
+        <input required type="email" class="form-control" 
           [(ngModel)]="email" name="email">
       </div>
       <button type="submit" class="btn btn-primary">Sign Up</button>
