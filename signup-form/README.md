@@ -9,3 +9,10 @@ To work on this project:
 * Run `npm run serve` to start a local development web server. You can now access the application at [localhost:8080](http://localhost:8080/).
 
 This example is part of the **Angular 2 From The Ground Up** course by Mirko Nasato.
+
+
+Learnings
+
+For using forms, we need to import the `FormsModule` from `@angular/forms` in `app.module.ts` and also declare the dependency in the `package.json` file.
+When a forms input field is bound to a component property via two-way-binding, the input element must be named as well.
+This is needed for angular to identify the field in the form.
