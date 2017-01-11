@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'signup-form',
@@ -6,9 +7,10 @@ import { Component } from '@angular/core';
     <form (submit)="onSubmit(emailField)" novalidate>
       <div class="form-group">
         <label>E-Mail</label>
-        <input type="email" class="form-control" #emailField
+        <input type="email" class="form-control" #emailField="ngModel"
           [(ngModel)]="email" name="email" required pattern=".+@.+">
-          <p *ngIf="false" class="alert alert-danger">Please enter a valid email</p>
+        <p *ngIf="emailField.touched && emailField.invalid" 
+            class="alert alert-danger">Please enter a valid email</p>
       </div>
       <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
@@ -22,7 +24,7 @@ export class SignupFormComponent {
 
   email = '';
 
-  onSubmit(emailField) {
+  onSubmit(emailField: NgModel) {
     console.log('emailField:', emailField);
     //console.log('should submit:', this.email);
   }

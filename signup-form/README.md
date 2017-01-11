@@ -23,3 +23,8 @@ We need to disable HTML5 basic form validation via `<form novalidate>` and use a
 When we bind an input element with `[(ngModel)]`, angular automatically adds some classes like `ng-pristine`, `ng-invalid`, `ng-touched` etc..
 Some classes are removed or added when interaction takes places.
 For example `ng-pristine` changes to `ng-dirty` is added after a field is modified, `ng-untouched` changes to `ng-touched` when the input fields focus is lost, and `ng-valid`/ `ng-invalid` indicates if an input field is valid.
+
+To reference input fields with angular we can declare in input field with a local variable like `<input #emailField ...>`.
+This actually reference the dom element and we could check for the existence of certain classes to display error messages etc..
+It is better to directly reference the ngModel instance for the field, by assigning the local varaible to `ngModel`.
+This ngModel instance has also the fields like `pristine`, `touched` etc. and can therefore be used for validation as well with the `invalid` property.
