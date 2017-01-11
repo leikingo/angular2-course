@@ -11,6 +11,13 @@ import { Component } from '@angular/core';
         <p *ngIf="emailField.touched && emailField.invalid" 
             class="alert alert-danger">Please enter a valid email</p>
       </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" #passwordField="ngModel"
+          [(ngModel)]="password" name="password" required >
+        <p *ngIf="passwordField.touched && passwordField.invalid" 
+            class="alert alert-danger">Please enter a password</p>
+      </div>
       <button type="submit" class="btn btn-primary"
         [disabled]="form.invalid"
         >Sign Up</button>
@@ -24,6 +31,7 @@ import { Component } from '@angular/core';
 export class SignupFormComponent {
 
   email = '';
+  password = '';
 
   onSubmit() {
     console.log('should submit:', this.email);
