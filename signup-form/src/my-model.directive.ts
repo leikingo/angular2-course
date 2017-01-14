@@ -5,16 +5,14 @@ import { Directive, ElementRef, Input } from '@angular/core';
 })
 export class MyModelDirective {
 
-    @Input('myModel') model;
-
     private element: HTMLInputElement;
 
     constructor(elementRef: ElementRef){
         this.element = elementRef.nativeElement;
     }
 
-    ngOnInit() {
-        console.log('model:', this.model);
-        this.element.value = this.model;
+    @Input('myModel') set model(value){
+        this.element.value = value;
     }
+
 }

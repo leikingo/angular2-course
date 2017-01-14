@@ -42,3 +42,5 @@ Therefore the `ElementRef` can be injected to the constructor; the dom element i
 To implement one-way-binding to a value, we can use `@Input() myValue`, just like with custom components, and then bind it with `<input ... [myValue]="myProp">`
 When the directives name and the input property have the same name, we can directly instantiate the directive itself bind to the dom element and bind a component property value with the directives property: `<input [myDirective]="myProp">`.
 As an alternative we could also name the input reference with the directives name: `@Input('myModel') model;`.
+Instead of assigning the input value to the directive element in `ngOnInit` (which results in a one shot set), the input property should be defined as a setter of the directive: ` @Input('myModel') set model(value){ this.element.value = value;}`
+This setter is always called when the bound property was changed.
