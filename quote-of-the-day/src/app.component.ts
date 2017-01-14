@@ -6,7 +6,7 @@ import { QuoteService } from './quote.service';
   selector: 'my-app',
   template: `
     <h1>Quote Of The Day</h1>
-    <p><em>{{quote.line}}</em> - {{quote.author}}</p>
+    <p><em>{{quote?.line}}</em> - {{quote?.author}}</p>
   `
 })
 export class AppComponent {
@@ -14,7 +14,8 @@ export class AppComponent {
   quote: Quote;
 
   constructor(quoteService: QuoteService) {
-    this.quote = quoteService.getQuoteOfTheDay();
+    quoteService.getQuoteOfTheDay()
+    .then( quote => this.quote = quote);
   }
 
 }
