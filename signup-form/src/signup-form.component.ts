@@ -30,8 +30,8 @@ import { NgForm } from '@angular/forms';
     </form>
   `,
   styles: [`
-    input.ng-dirty.ng-invalid { border: solid red 2px; }
-    input.ng-dirty.ng-valid { border: solid green 2px; }
+    input.my-invalid { border: solid red 2px; }
+    input.my-valid { border: solid green 2px; }
   `]
 })
 export class SignupFormComponent {

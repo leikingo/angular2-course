@@ -16,12 +16,26 @@ export class MyModelDirective {
 
     @Input('myModel') set model(value){
         this.element.value = value;
+        this.validate();
     }
 
     // whenever input is fired on the hosting dom element, onInput is called
     @HostListener('input') onInput() {
         console.log("onInput:", this.element.value);
         this.modelChange.emit(this.element.value);
+        this.validate();
+    }
+
+    private validate() {
+        // very simple demonstration. To avoid unnescessary dom updates
+        // we should only add and remove classes when the validity changes.
+        if ( this.element.value ){
+            this.element.classList.remove("my-invalid");
+            this.element.classList.add("my-valid");
+        } else {
+            this.element.classList.remove("my-valid");
+            this.element.classList.add("my-invalid");
+        }
     }
 
 }
