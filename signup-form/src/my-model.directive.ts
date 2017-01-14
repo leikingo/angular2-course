@@ -5,6 +5,8 @@ import { Directive, ElementRef, Input, Output, HostListener, EventEmitter } from
 })
 export class MyModelDirective {
 
+    @Input() required; // see if the attribute is set...
+
     // use the property name + Change, to simplify usage ([()] syntax).
     @Output('myModelChange') modelChange = new EventEmitter();
 
@@ -27,9 +29,10 @@ export class MyModelDirective {
     }
 
     private validate() {
+        console.log("value is required:",! (this.required === undefined) );
         // very simple demonstration. To avoid unnescessary dom updates
         // we should only add and remove classes when the validity changes.
-        if ( this.element.value ){
+        if ( this.required === undefined || this.element.value ){
             this.element.classList.remove("my-invalid");
             this.element.classList.add("my-valid");
         } else {

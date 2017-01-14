@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
     <form (ngSubmit)="onSubmit(form)" novalidate #form="ngForm">
       <div class="form-group">
         <label>E-Mail</label>
-        <input type="text" class="form-control" [(myModel)]="email">
+        <input type="text" class="form-control" [(myModel)]="email" required>
         <!--
           <p *ngIf="emailField.touched && emailField.invalid" 
             class="alert alert-danger">Please enter a valid email</p>
@@ -36,7 +36,7 @@ import { NgForm } from '@angular/forms';
 })
 export class SignupFormComponent {
 
-  email = 'test@example.com';
+  email = '';
   password = '';
 
   onSubmit(form: NgForm) {
