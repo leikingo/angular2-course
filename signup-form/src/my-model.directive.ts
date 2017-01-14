@@ -1,11 +1,19 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 
 @Directive({
     selector: '[myModel]'
 })
 export class MyModelDirective {
 
+    @Input() myValue;
+
+    private element: HTMLInputElement;
+
     constructor(elementRef: ElementRef){
-        console.log('myModel element:', elementRef.nativeElement);
+        this.element = elementRef.nativeElement;
+    }
+
+    ngOnInit() {
+        console.log('myValue:', this.myValue);
     }
 }

@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
   selector: 'signup-form',
   template: `
     <form (ngSubmit)="onSubmit(form)" novalidate #form="ngForm">
+    <!--
       <div class="form-group">
         <label>E-Mail</label>
         <input type="email" class="form-control" #emailField="ngModel"
@@ -12,9 +13,10 @@ import { NgForm } from '@angular/forms';
         <p *ngIf="emailField.touched && emailField.invalid" 
             class="alert alert-danger">Please enter a valid email</p>
       </div>
+    -->
       <div class="form-group">
-        <label>My-Directive</label>
-        <input type="text" class="form-control" name="my-directive"  myModel >
+        <label>E-Mail</label>
+        <input type="text" class="form-control" myModel [myValue]="email">
       </div>
       <div class="form-group">
         <label>Password</label>
@@ -23,6 +25,7 @@ import { NgForm } from '@angular/forms';
         <p *ngIf="passwordField.touched && passwordField.invalid" 
             class="alert alert-danger">Please enter a password</p>
       </div>
+      <pre>E-Mail: {{email}}</pre>
       <button type="submit" class="btn btn-primary"
         [disabled]="form.invalid"
         >Sign Up</button>
@@ -35,7 +38,7 @@ import { NgForm } from '@angular/forms';
 })
 export class SignupFormComponent {
 
-  email = '';
+  email = 'test@example.com';
   password = '';
 
   onSubmit(form: NgForm) {

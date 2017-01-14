@@ -39,3 +39,5 @@ Custom Directives are created like custom components but with the `@Directive` a
 The selector for directives is typically written with *CamelCasing* cause it is most likely used as a custom dom attribute/ property and as an element itself.
 Directives often needs a reference to the dom element which is hosting the directive.
 Therefore the `ElementRef` can be injected to the constructor; the dom element is referenced by `elementRef.nativeElement`.
+To implement one-way-binding to a value, we can use `@Input() myValue`, just like with custom components, and then bind it with `<input ... [myValue]="myProp">`
+
