@@ -9,3 +9,10 @@ To work on this project:
 * Run `npm run serve` to start a local development web server. You can now access the application at [localhost:8080](http://localhost:8080/).
 
 This example is part of the **Angular 2 From The Ground Up** course by Mirko Nasato.
+
+
+## Learnings
+
+We can use angulars `HttpModule` for HTTP request.
+Instead of import and declare on the Http service, we can import the complete `HttpModule` in the `imports` property of `NgModule`.
+To inject a services, in this case the Http service, in a custom service, the custom service class must be annotated with `@Injectable`.

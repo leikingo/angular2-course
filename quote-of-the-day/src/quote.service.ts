@@ -1,6 +1,14 @@
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import { Quote } from './quote.model';
 
+
+@Injectable()
 export class QuoteService {
+
+  constructor(private http: Http){
+
+  }
 
   getQuoteOfTheDay(): Quote {
     return {
