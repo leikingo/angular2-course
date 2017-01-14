@@ -34,3 +34,8 @@ To check the overall form status we can use the `ngForm` instance, which is auto
 By assigning this `ngForm` instance to a local template variable like `<form #form="ngForm">` we can reference it for further validation for instance.
 Instead of using the `(submit)` event of a form, we can also bind to the `(ngSubmit)` event which is emitted be the `ngForm` instance.
 To reset a form, we can use the `ngForm.resetForm()`, which also set the default classes like `ng-pristine` and `ng-untouched`.
+
+Custom Directives are created like custom components but with the `@Directive` annotation.
+The selector for directives is typically written with *CamelCasing* cause it is most likely used as a custom dom attribute/ property and as an element itself.
+Directives often needs a reference to the dom element which is hosting the directive.
+Therefore the `ElementRef` can be injected to the constructor; the dom element is referenced by `elementRef.nativeElement`.

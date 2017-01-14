@@ -13,6 +13,10 @@ import { NgForm } from '@angular/forms';
             class="alert alert-danger">Please enter a valid email</p>
       </div>
       <div class="form-group">
+        <label>My-Directive</label>
+        <input type="text" class="form-control" name="my-directive"  myModel >
+      </div>
+      <div class="form-group">
         <label>Password</label>
         <input type="password" class="form-control" #passwordField="ngModel"
           [(ngModel)]="password" name="password" required >
