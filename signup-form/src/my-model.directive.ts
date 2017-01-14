@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Input, Output, HostListener, EventEmitter } from '@angular/core';
 
 @Directive({
-    selector: '[myModel]'
+    selector: '[myModel]',
+    exportAs: 'myModel'
 })
 export class MyModelDirective {
 
@@ -9,6 +10,8 @@ export class MyModelDirective {
 
     // use the property name + Change, to simplify usage ([()] syntax).
     @Output('myModelChange') modelChange = new EventEmitter();
+
+    invalid = true;
 
     private element: HTMLInputElement;
 
@@ -35,9 +38,11 @@ export class MyModelDirective {
         if ( this.required === undefined || this.element.value ){
             this.element.classList.remove("my-invalid");
             this.element.classList.add("my-valid");
+            this.invalid = false;
         } else {
             this.element.classList.remove("my-valid");
             this.element.classList.add("my-invalid");
+            this.invalid = true;
         }
     }
 

@@ -51,3 +51,6 @@ When ever the event is fired the annotated method will be called.
 To notify about the changes, we use an event emitter in this listener method, to emit the changes.
 We define the `@Output()` event emitter with the name "property+Change", to allow the *banana in a box* syntax, just like for custom components.
 To mimic the `ng-valid` and `ng-invalid` functionality, we add or remove different css class like `my-invalid` when ever the value of the directive changes.
+
+To assign a custom directive to a template local variable, the directive must declare the `exportAs` directive attribute.
+The value of this attribute must be used when the variable is assigned: `exportAs: 'myModel'` and `field='myModel'`.
