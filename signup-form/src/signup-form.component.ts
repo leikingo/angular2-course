@@ -16,7 +16,7 @@ import { NgForm } from '@angular/forms';
     -->
       <div class="form-group">
         <label>E-Mail</label>
-        <input type="text" class="form-control" myModel [myValue]="email">
+        <input type="text" class="form-control" [myModel]="email">
       </div>
       <div class="form-group">
         <label>Password</label>

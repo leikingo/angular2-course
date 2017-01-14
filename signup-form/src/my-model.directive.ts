@@ -5,7 +5,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
 })
 export class MyModelDirective {
 
-    @Input() myValue;
+    @Input('myModel') model;
 
     private element: HTMLInputElement;
 
@@ -14,6 +14,7 @@ export class MyModelDirective {
     }
 
     ngOnInit() {
-        console.log('myValue:', this.myValue);
+        console.log('model:', this.model);
+        this.element.value = this.model;
     }
 }

@@ -40,4 +40,5 @@ The selector for directives is typically written with *CamelCasing* cause it is 
 Directives often needs a reference to the dom element which is hosting the directive.
 Therefore the `ElementRef` can be injected to the constructor; the dom element is referenced by `elementRef.nativeElement`.
 To implement one-way-binding to a value, we can use `@Input() myValue`, just like with custom components, and then bind it with `<input ... [myValue]="myProp">`
-
+When the directives name and the input property have the same name, we can directly instantiate the directive itself bind to the dom element and bind a component property value with the directives property: `<input [myDirective]="myProp">`.
+As an alternative we could also name the input reference with the directives name: `@Input('myModel') model;`.
