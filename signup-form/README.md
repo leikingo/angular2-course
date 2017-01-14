@@ -44,3 +44,9 @@ When the directives name and the input property have the same name, we can direc
 As an alternative we could also name the input reference with the directives name: `@Input('myModel') model;`.
 Instead of assigning the input value to the directive element in `ngOnInit` (which results in a one shot set), the input property should be defined as a setter of the directive: ` @Input('myModel') set model(value){ this.element.value = value;}`
 This setter is always called when the bound property was changed.
+
+To support *Two-Way-Binding* and thus reflect changes which are made to dom elments input field, we use a `HostListener`.
+The *HostListener* can be used to subscribe to events from the element hosting the directive like the `input` event with `@HostListener('input')`.
+When ever the event is fired the annotated method will be called.
+To notify about the changes, we use an event emitter in this listener method, to emit the changes.
+We define the `@Output()` event emitter with the name "property+Change", to allow the *banana in a box* syntax, just like for custom components.

@@ -5,18 +5,13 @@ import { NgForm } from '@angular/forms';
   selector: 'signup-form',
   template: `
     <form (ngSubmit)="onSubmit(form)" novalidate #form="ngForm">
-    <!--
       <div class="form-group">
         <label>E-Mail</label>
-        <input type="email" class="form-control" #emailField="ngModel"
-          [(ngModel)]="email" name="email" required pattern=".+@.+">
-        <p *ngIf="emailField.touched && emailField.invalid" 
+        <input type="text" class="form-control" [(myModel)]="email">
+        <!--
+          <p *ngIf="emailField.touched && emailField.invalid" 
             class="alert alert-danger">Please enter a valid email</p>
-      </div>
-    -->
-      <div class="form-group">
-        <label>E-Mail</label>
-        <input type="text" class="form-control" [myModel]="email">
+        -->
       </div>
       <div class="form-group">
         <label>Password</label>
@@ -29,6 +24,9 @@ import { NgForm } from '@angular/forms';
       <button type="submit" class="btn btn-primary"
         [disabled]="form.invalid"
         >Sign Up</button>
+      <button type="button" class="btn btn-warning"  
+        (click)="email=''"
+        >Reset</button>
     </form>
   `,
   styles: [`
