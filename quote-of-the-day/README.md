@@ -24,6 +24,7 @@ For single operations, only these can be imported as an optimization, like `impo
 Imports are available to all components , thus it should/ could be imported in `main.ts` as well.
 To deal with undefined variables in the asynchronous processing we can use the safe navigation operator `.?` in template expressions.
 
+
 `Promises` are an ES6 feature for asynchronous processing.
 For example for an HTTP request, we need to wait till the response comes back.
 One possibility is using callbacks, but these are not very flexible and lead to deep nesting when we need the result of one async method as input for the next.
@@ -60,3 +61,48 @@ add(3,2)
 
 To handle an error in an intermediate step, we can process this with a second function of the `then` function.
 For final steps that should be executed even after a catch operation, we can add another `then` call without a result: `.catch(error => ...).then( () => finalOperation());`
+
+
+In addition to `Promises` Angular often uses *RxJS* `Observables` for example for the HTTP client.
+`Observables` are more powerful than `Promises` as they can return more than just a single result, like a stream of values for example.
+
+```
+add(x,y): Observable<number> {
+    return new Observable.create( observer => {
+        setTimeout(() => {
+            const result = x+y;
+            if ( result >= 0 ){
+                observer.next(result);
+                observer.complete();
+            } else { // error when negative
+                observer.error('invalid value: ' + result);
+            }
+        }, 100);
+    });
+}
+
+add(3,2)
+    .mergeMap( result => add(result, 5))
+    .mergeMap( result => add(result, -2))
+    .finally( () => finalOperation())
+    .subscribe( result => ..., error => ...)
+```
+
+For chaining Observables we use `map()` for returning immediate results, or `mergeMap()` for returning another Observable.
+`subscribe` is always used as the last operation as it will trigger the observable to be executed.
+`map`, `mergeMap`, `finally`are only intermediate operations that return another `Oberservable`.
+For simple operations, that calculate only a single value, the conversion to a `Promise` might be the easier solution.
+`Observables` can/ should be used for creating a stream of values.
+
+```
+countDown(start): Observable<number> {
+    return Observable.timer(1, 1000)
+        .map( x => start - x )
+        .takeWhile( x => x > 0);
+}
+
+countDown(5)
+    .subscribe(result => this.result = result, null, () => this.result = 'Complete');
+
+```
+
