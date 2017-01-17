@@ -24,3 +24,39 @@ For single operations, only these can be imported as an optimization, like `impo
 Imports are available to all components , thus it should/ could be imported in `main.ts` as well.
 To deal with undefined variables in the asynchronous processing we can use the safe navigation operator `.?` in template expressions.
 
+`Promises` are an ES6 feature for asynchronous processing.
+For example for an HTTP request, we need to wait till the response comes back.
+One possibility is using callbacks, but these are not very flexible and lead to deep nesting when we need the result of one async method as input for the next.
+In addition, we need additonal callbacks for error handling.
+`Promises` take a resolve function which calculates the result, which then is passed to the `then` method.
+Example: `add(x,y): Promise<number> { return new Promise( resolve => resolve(x+y));}`
+In constrast to callbacks, `Promises` can be chained by adding multiple `then` steps like `.then( result => ...).then( result => ...)`.
+`then` steps can return another `Promise` or an immediate result, also with a different return type.
+To simplify error handling, we can catch error as the last step in the promise chain with `.catch(error => ...)`.
+The promise can signalize an error via a second parameter called `reject`.
+
+```
+add(x,y): Promise<number> {
+    return new Promise( resolve, reject ) => {
+        setTimeout(() => {
+            const result = x+y;
+            if ( result >= 0 ){
+                resolve(result);
+            } else { // error when negative
+                reject('invalid value: ' + result);
+            }
+        }, 100);
+    });
+}
+
+add(3,2)
+    .then( result => add(result, 5))
+    .then( result => add(result, -2))
+    .then( result => {
+        console.log("final result:", result);
+    })
+    .catch(error => console.error("error:", error);)
+```
+
+To handle an error in an intermediate step, we can process this with a second function of the `then` function.
+For final steps that should be executed even after a catch operation, we can add another `then` call without a result: `.catch(error => ...).then( () => finalOperation());`
