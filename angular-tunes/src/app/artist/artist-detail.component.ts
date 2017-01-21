@@ -1,23 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArtistService } from './artist.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'artist-detail',
   templateUrl: 'artist-detail.component.html'
 })
-export class ArtistDetailComponent {
+export class ArtistDetailComponent implements OnInit, OnDestroy {
 
   artist;
+  paramsSubscription: Subscription;
 
   constructor(private route: ActivatedRoute,
     private artistService: ArtistService) {
-
-    route.params.subscribe( params => {
-      this.artist = this.artistService.getArtist(params['artistId']);
-    });
-
   }
 
+  ngOnInit(){
+    this.paramsSubscription = this.route.params.subscribe( params => {
+      this.artist = this.artistService.getArtist(params['artistId']);
+    });
+  }
+
+  ngOnDestroy() {
+    this.paramsSubscription.unsubscribe();
+  }
 
 }

@@ -50,3 +50,4 @@ Components that should  handle the route parameters can use the `ActivatedRoute`
 The actual parameters are in the `ActivatedRoute` property `route.snapshot.params`.
 This could only be used for the initial load since changes to the url do not always lead to the instantiation of a new component (the same component might be used again).
 To listen to url changes we should subcribe to the `ActivatedRoute` property `params` which is an `Observable`.
+To avoid memory leaks we must also `unsubscribe` from this subscription, usually in the `ngOnDestroy` callback method.
