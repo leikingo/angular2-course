@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { LoginService } from './login.service'
 
 
@@ -19,14 +19,18 @@ export class LoginFormComponent {
     user: '';
     password: '';
 
-    constructor(private loginService: LoginService,
-        private router: Router){
+    constructor(private route: ActivatedRoute,
+                private loginService: LoginService,
+                private router: Router){
 
     }
 
     login(){
+        // here we are only interested in the current value and not to url changes
+        // thus we can take the snapshot here
+        const destination = this.route.snapshot.queryParams['destination'] || '/'; 
         if (this.loginService.login(this.user, this.password)){
-            this.router.navigate(['/']);
+            this.router.navigateByUrl(destination);
         }
     }
 
