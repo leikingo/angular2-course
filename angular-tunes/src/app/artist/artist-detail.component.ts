@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ArtistService } from './artist.service';
 
 @Component({
@@ -8,10 +9,15 @@ import { ArtistService } from './artist.service';
 export class ArtistDetailComponent {
 
   artist;
-  artistId = '630662ea-1c7d-4208-99fd-ba3afec20f0c';
 
-  constructor(private artistService: ArtistService) {
-    this.artist = this.artistService.getArtist(this.artistId);
+  constructor(private route: ActivatedRoute,
+    private artistService: ArtistService) {
+
+    console.log("params:", route.snapshot.params);
+
+    const artistId = route.snapshot.params['artistId'];
+    
+    this.artist = this.artistService.getArtist(artistId);
   }
 
 

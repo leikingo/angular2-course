@@ -8,7 +8,7 @@ export const routing = RouterModule.forRoot([
         component: ArtistListComponent
     },
     {
-        path: 'artists/detail',
+        path: 'artists/:artistId',
         component: ArtistDetailComponent
     },
     {

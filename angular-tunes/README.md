@@ -44,3 +44,9 @@ The `HashLocationStrategy` extracts the path after the *hash* symbol in the URL 
 
 Finally we need to place the `<router-outlet>` element in the the app component template as the container for the different routes/ views.
 For the actual linking, instead of using an direct `href` we should use the `[routerLink]` directive.
+Route parameters are defined after a `:` in the routers path like `artists/:artistId`.
+The `routerLink` directive takes these route parameters as different arguments in its value like `[routerLink]=['/artists', artist.id]`
+Components that should  handle the route parameters can use the `ActivatedRoute` parameter, which can be injected in the components constructor.
+The actual parameters are in the `ActivatedRoute` property `route.snapshot.params`.
+This could only be used for the initial load since changes to the url do not always lead to the instantiation of a new component (the same component might be used again).
+To listen to url changes we should subcribe to the `ActivatedRoute` property `params` which is an `Observable`.

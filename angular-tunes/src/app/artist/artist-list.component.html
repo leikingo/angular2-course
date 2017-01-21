@@ -2,7 +2,7 @@
 <table class="table">
   <tr *ngFor="let artist of artists">
     <td>
-      <a [routerLink]="['/artists/detail']">{{artist.name}}</a>
+      <a [routerLink]="['/artists', artist.id]">{{artist.name}}</a>
     </td>
   </tr>
 </table>
