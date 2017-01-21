@@ -5,18 +5,23 @@ import { FormsModule } from '@angular/forms';
 import { routing } from './app.routing'
 import { AppComponent } from './app.component';
 import { ArtistService } from './artist/artist.service';
+import { AlbumService } from './album/album.service';
 import { ArtistListComponent } from './artist/artist-list.component';
+import { AlbumListComponent } from './album/album-list.component';
 import { ArtistDetailComponent } from './artist/artist-detail.component';
+import { AlbumDetailComponent } from './album/album-detail.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, routing],
   declarations: [
     AppComponent,
     ArtistListComponent,
-    ArtistDetailComponent
+    ArtistDetailComponent,
+    AlbumListComponent,
+    AlbumDetailComponent
   ],
   providers: [
-    ArtistService,
+    ArtistService, AlbumService,
     {provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]

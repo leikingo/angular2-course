@@ -7,7 +7,7 @@
         <table class="table">
           <tr *ngFor="let album of artist.albums">
             <td>
-              <a>{{album.title}}</a>
+              <a [routerLink]="['/albums', album.id]">{{album.title}}</a>
             </td>
             <td>{{album.year}}</td>
           </tr>
