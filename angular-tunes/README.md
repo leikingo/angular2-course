@@ -23,3 +23,24 @@ If we have multiple *if/else* blocks in the template HTML, we could replace this
 Simple linking between component might be done via showing and hiding different elements on the page.
 But this have multiple downsides like not working back button or missing direct linking since the URL does not change.
 In addition we need additional properties and events to track the current state of the components.
+
+For better routing we need to use the angular *Router* Module, which must be added to the package dependencies with `@angular/route`.
+Routes should be declared in a seperate file like `app.routing.ts`.
+In contrast to the other angular modules the *RouterModule* does not have to be declared in the `AppModule`.
+Instead we could set routes via the method `RouterModule.forRoot` to pass an array of routes.
+
+```
+export const routing = RouterModule.forRoot([
+    {
+        path: '...',
+        component: ...,
+    }
+]);
+```
+
+The `routing` object must then be imported in the `AppModule` in the imports array.
+Additional we should declare a location strategy, which can be for example the `HashLocationStrategy` or the ...
+The `HashLocationStrategy` extracts the path after the *hash* symbol in the URL to map the routes.
+
+Finally we need to place the `<router-outlet>` element in the the app component template as the container for the different routes/ views.
+For the actual linking, instead of using an direct `href` we should use the `[routerLink]` directive.

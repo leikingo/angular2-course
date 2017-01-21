@@ -2,7 +2,7 @@
 <table class="table">
   <tr *ngFor="let artist of artists">
     <td>
-      <a (click)="artistSelect.emit(artist.id)">{{artist.name}}</a>
+      <a [routerLink]="['/artists/detail']">{{artist.name}}</a>
     </td>
   </tr>
 </table>
