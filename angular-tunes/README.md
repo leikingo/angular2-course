@@ -51,3 +51,7 @@ The actual parameters are in the `ActivatedRoute` property `route.snapshot.param
 This could only be used for the initial load since changes to the url do not always lead to the instantiation of a new component (the same component might be used again).
 To listen to url changes we should subcribe to the `ActivatedRoute` property `params` which is an `Observable`.
 To avoid memory leaks we must also `unsubscribe` from this subscription, usually in the `ngOnDestroy` callback method.
+
+For protecting routes for example to hide pages that are not visible for user that are not logged in, routes can be provided with guards.
+A guard is a class implementing the interface `CanActivate`, which requires a method `canActivate` that returns either `true`or `false`for indication if a route can be activated.
+The property `canActivate` from the route object, then references an array of guards, that will be checked when the route is activated.
