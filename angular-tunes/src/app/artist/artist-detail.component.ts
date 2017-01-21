@@ -13,11 +13,10 @@ export class ArtistDetailComponent {
   constructor(private route: ActivatedRoute,
     private artistService: ArtistService) {
 
-    console.log("params:", route.snapshot.params);
+    route.params.subscribe( params => {
+      this.artist = this.artistService.getArtist(params['artistId']);
+    });
 
-    const artistId = route.snapshot.params['artistId'];
-    
-    this.artist = this.artistService.getArtist(artistId);
   }
 
 
