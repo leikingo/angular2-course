@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common'
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { routing } from './app.routing'
@@ -25,8 +24,7 @@ import { LoginService } from './login/login.service';
     LoginFormComponent
   ],
   providers: [
-    ArtistService, AlbumService, LoggedInGuard, LoginService,
-    {provide: LocationStrategy, useClass: HashLocationStrategy }
+    ArtistService, AlbumService, LoggedInGuard, LoginService
   ],
   bootstrap: [AppComponent]
 })

@@ -39,8 +39,16 @@ export const routing = RouterModule.forRoot([
 ```
 
 The `routing` object must then be imported in the `AppModule` in the imports array.
-Additional we should declare a location strategy, which can be for example the `HashLocationStrategy` or the ...
-The `HashLocationStrategy` extracts the path after the *hash* symbol in the URL to map the routes.
+Additional we should declare a location strategy, which can be for example the `HashLocationStrategy` or the `PathLocationStrategy`.
+The `HashLocationStrategy` uses the hash part of the URL to map the routes, the root path is always the same, typically `/`.
+With `HashLocationStrategy` url query parameters are also part of the urls hash.
+
+The `PathLocationStrategy` uses the path of the URL, which is the default in angular in therefore don't need to be set explicitly.
+The benefit of this scheme is that the path really references the ressource and also the query parameters are actually used.
+This strategy makes use of the browsers *Session history management*/ *HTML5 Push State* API, which allows manipulating the browsers history via JS.
+To get the `PathLocationStrategy` working, the `base href` must set in the head part of `index.html`, mostlikely to `<base href='/'>`.
+In addition the webserver must also be reconfigured to always return the same `index.html` file for different locations.
+For the webpack dev server, we need to set the `historyApiFallback` to true.
 
 Finally we need to place the `<router-outlet>` element in the the app component template as the container for the different routes/ views.
 For the actual linking, instead of using an direct `href` we should use the `[routerLink]` directive.
