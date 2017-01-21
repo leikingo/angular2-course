@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ArtistService } from './artist.service';
 
 @Component({
   selector: 'artist-detail',
   templateUrl: 'artist-detail.component.html'
 })
-export class ArtistDetailComponent {
+export class ArtistDetailComponent implements OnInit {
 
   artist;
-  artistId = '630662ea-1c7d-4208-99fd-ba3afec20f0c';
+  @Input() artistId;
 
   constructor(private artistService: ArtistService) {
+  }
+
+  ngOnInit(){
     this.artist = this.artistService.getArtist(this.artistId);
   }
 

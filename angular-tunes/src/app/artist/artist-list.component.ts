@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { ArtistService } from './artist.service';
 
 @Component({
@@ -6,6 +6,8 @@ import { ArtistService } from './artist.service';
   templateUrl: 'artist-list.component.html'
 })
 export class ArtistListComponent {
+
+  @Output() artistSelect = new EventEmitter();
 
   artists;
 
